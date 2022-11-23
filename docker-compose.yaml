@@ -1,24 +1,21 @@
-version: '3'
+version: '3.5'
 services:
   jenkins:
-    restart: always
     image: jenkins/jenkins:lts
     container_name: jenkins
-    privileged: true
+    restart: always
     ports:
-      - 8080:8080
+      - 10380:8080
     container_name: jenkins
     volumes:
-      - ~/jenkins-data:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /usr/local/bin/docker:/usr/local/bin/docker
+      - ./jenkins:/var/jenkins_home
   nexus:
     restart: always
     image: sonatype/nexus3
     container_name: nexus3
     privileged: true
     ports:
-      - 8081:8081
+      - 10680:8081
     command: ["--privileged=true"]
     volumes:
-      - /usr/local/docker/nexus/nexus-data:/nexus-data
+      - ./nexus:/nexus-data
