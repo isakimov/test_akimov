@@ -8,8 +8,6 @@ services:
     ports:
       - 8080:8080
     container_name: jenkins
-    command: ["sh", "chown -R 200:200 /nexus"]
-    command: ["sh", "sudo chown -R jenkins:jenkins /var/jenkins_home"]
     volumes:
       - ~/jenkins-data:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
