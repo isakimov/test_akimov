@@ -19,6 +19,6 @@ services:
     privileged: true
     ports:
       - 8081:8081
-    command: ["sh", "-c", "chown -R 200:200 /sonatype-work"]
+    command: ["sh", "-c", "chown -R 200:200 /nexus-data"]
     volumes:
       - /usr/local/docker/nexus/nexus-data:/nexus-data
