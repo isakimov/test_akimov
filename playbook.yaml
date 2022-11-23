@@ -1,0 +1,19 @@
+- hosts: localhost
+  remote_user: root
+  become: yes
+  tasks:
+   - name: Creates directory
+     file:
+       path: /home/test_akimov
+       state: directory
+
+   - name: Clone git to a local server
+     git:
+       repo: https://github.com/isakimov/test_akimov.git
+       dest: /home/test_akimov/
+
+   - name: Deploy jenkins and nexus
+     community.docker.docker_compose:
+       project_src: /home/test_akimov
+       files:
+       - docker-compose.yaml
