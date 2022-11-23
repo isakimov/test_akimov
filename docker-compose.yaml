@@ -21,5 +21,6 @@ services:
     privileged: true
     ports:
       - 8081:8081
+    command: ["--privileged=true"]
     volumes:
       - /usr/local/docker/nexus/nexus-data:/nexus-data
