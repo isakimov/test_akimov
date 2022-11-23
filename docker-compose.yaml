@@ -8,6 +8,7 @@ services:
     ports:
       - 8080:8080
     container_name: jenkins
+    command: ["sh", "chown -R 200:200 /nexus"]
     command: ["sh", "sudo chown -R jenkins:jenkins /var/jenkins_home"]
     volumes:
       - ~/jenkins-data:/var/jenkins_home
@@ -20,6 +21,5 @@ services:
     privileged: true
     ports:
       - 8081:8081
-    command: ["sh", "chown -R 200:200 /nexus"]
     volumes:
       - /usr/local/docker/nexus/nexus-data:/nexus-data
