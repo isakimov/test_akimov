@@ -16,6 +16,6 @@ services:
     restart: always
     ports:
       - 10680:8081
-    command: /bin/bash -c chown -R 200:200 /nexus
+    command: /bin/bash -c chmod -R 777 /nexus
     volumes:
       - ./nexus:/nexus-data
