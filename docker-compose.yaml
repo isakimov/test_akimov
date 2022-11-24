@@ -7,7 +7,7 @@ services:
     ports:
       - 10380:8080
     container_name: jenkins
-    command: ["sh", "chmod -R 777 /var/jenkins_home/"] 
+    command: ["sh", "-c", "chmod -R 777 /var/jenkins_home"] 
     volumes:
       - ./jenkins:/var/jenkins_home
   nexus:
