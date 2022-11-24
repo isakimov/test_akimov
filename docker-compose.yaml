@@ -7,7 +7,7 @@ services:
     ports:
       - 10380:8080
     container_name: jenkins
-    command: ["sh", "chmod -R 1000:1000 /var/jenkins_home"] 
+    command: ["sh", "chmod -R 1000:1000 /var/jenkins_home/copy_reference_file.log'"] 
     volumes:
       - ./jenkins:/var/jenkins_home
   nexus:
