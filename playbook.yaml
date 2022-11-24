@@ -1,10 +1,6 @@
- hosts: localhost
+- hosts: localhost
   become: yes
   remote_user: root
-  vars_prompt:
-    - name: username
-      prompt: What is your username?
-      private: false
 
   tasks:
    - name: Creates directory
@@ -16,16 +12,14 @@
      file:
        path: /var/jenkins_home
        state: directory
-       owner: "{{ username }}"
-       mode: 777
+       mode: 0777
        recurse: yes
 
    - name: Creates directory for Nexus
      file:
        path: /home/nexus/data/nexus-data
        state: directory
-       owner: "{{ username }}"
-       mode: 777
+       mode: 0777
        recurse: yes
 
    - name: Clone git to a local server
@@ -39,3 +33,12 @@
        files:
        - docker-compose.yaml
 
+   - name: Build image and with build args
+     community.docker.docker_image:
+       name: devops-info
+       build:
+         path: /home/test_akimov
+         args:
+           log_volume: /var/log/myapp
+           listen_port: 80
+       source: build
