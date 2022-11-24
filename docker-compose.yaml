@@ -7,7 +7,6 @@ services:
     ports:
       - 10380:8080
     container_name: jenkins
-    command: ["/bin/bash", "-c", "chown", "-R", "jenkins:jenkins", "/var/jenkins_home"]
     volumes:
       - ./jenkins-data:/var/jenkins_home
   nexus:
