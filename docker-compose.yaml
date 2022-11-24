@@ -7,7 +7,7 @@ services:
     ports:
       - 10380:8080
     container_name: jenkins
-    command: chown -R 1000 ./jenkins-data
+    command: chown -R 1000 /var/jenkins_home
     volumes:
       - ./jenkins-data:/var/jenkins_home
   nexus:
