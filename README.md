@@ -13,3 +13,7 @@ $ sudo apt install ansible
 Папка для nexus
 mkdir -p /home/nexus/data/nexus-data
 sudo chown -R 200 /home/nexus/
+
+Вольюм подключается в /home    
+volumes:
+  - /nexus:/home/nexus-data
