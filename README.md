@@ -24,14 +24,15 @@ sudo usermod -aG docker $(whoami)
 sudo systemctl status docker
 
 - Docker-compose
-sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
 
 Запустить playbook.yaml 
 ansible-playbook playbook.yaml
 
-Jenkins на localhost:8080
-
-Nexus на localhost:8081
+Расположение:
+- Jenkins на localhost:8080
+- Nexus на localhost:8081
 
 Папка для nexus
 mkdir -p /home/nexus/data/nexus-data
