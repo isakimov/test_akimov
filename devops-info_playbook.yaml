@@ -1,0 +1,43 @@
+- hosts: localhost
+  become: yes
+  remote_user: root
+
+  tasks:
+   - name: Creates directory
+     file:
+       path: /home/test_akimov
+       state: directory
+       
+   - name: Clone git to a local server
+     git:
+       repo: https://github.com/isakimov/test_akimov.git
+       dest: /home/test_akimov/
+       
+   - name: Build image and with build args
+     community.docker.docker_image:
+       name: devops-info
+       build:
+         path: /home/test_akimov
+         args:
+           log_volume: /var/log/myapp
+           listen_port: 80
+       source: build
+
+   - name: Login DockerHub
+     community.docker.docker_login:
+       username: isakimov
+       password: 089769700dD
+
+   - name: Tag and push to DockerHub
+     community.docker.docker_image:
+       name: devops-info
+       repository: isakimov/devops-info:1.0
+       push: true
+       source: local
+
+   - name: Create container devops-info
+     community.docker.docker_container:
+       name: devops-info
+       image: isakimov/devops-info:1.0
+       ports:
+        - 8082:80
