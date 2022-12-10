@@ -4,6 +4,7 @@ metadata:
   name: devops-info
   labels:
     app: devops
+  namespace: default
 spec:
   replicas: 1
   minReadySeconds: 10
@@ -26,3 +27,18 @@ spec:
         ports:
         - containerPort: 80
       serviceAccountName: default
+      ---
+      apiVersion: v1
+kind: Service
+metadata:
+  name: devops-service
+  namespace: default
+spec:
+  selector:
+    app: devops
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: NodePort
+  serviceAccountName: default
