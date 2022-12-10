@@ -35,9 +35,7 @@
        push: true
        source: local
 
-   - name: Create container devops-info
-     community.docker.docker_container:
-       name: devops-info
-       image: isakimov/devops-info:1.0
-       ports:
-        - 8082:80
+   - name: Create a Deployment
+     kubernetes.core.k8s:
+       state: present
+       src: /home/test-akimov/deployment-service-ingress.yml
