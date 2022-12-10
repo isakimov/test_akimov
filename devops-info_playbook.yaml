@@ -1,23 +1,25 @@
 - hosts: localhost
-  become: yes
-  remote_user: root
+  become: no
+  remote_user: ivan
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
 
   tasks:
    - name: Creates directory
      file:
-       path: /home/test_akimov
+       path: /home/ivan/test_akimov
        state: directory
-       
+
    - name: Clone git to a local server
      git:
        repo: https://github.com/isakimov/test_akimov.git
-       dest: /home/test_akimov/
-       
+       dest: /home/ivan/test_akimov/
+
    - name: Build image and with build args
      community.docker.docker_image:
        name: devops-info
        build:
-         path: /home/test_akimov
+         path: /home/ivan/test_akimov
          args:
            log_volume: /var/log/myapp
            listen_port: 80
@@ -38,4 +40,5 @@
    - name: Create a Deployment
      kubernetes.core.k8s:
        state: present
-       src: /home/test-akimov/deployment-service-ingress.yml
+       src: /home/ivan/test_akimov/deployment.yaml
+
