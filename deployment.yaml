@@ -44,6 +44,14 @@ spec:
   serviceAccountName: default
 ---
 apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: internal-nginx
+  namespace: default
+spec:
+  controller: k8s.io/internal-ingress-nginx
+---
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 annotations:
   kubernetes.io/ingress.class: "nginx"
@@ -51,6 +59,7 @@ metadata:
   name: ingress-test
   namespace: default  
 spec:
+  ingressClassName: internal-nginx
   rules:
    - host: devops-info.com
      http:
