@@ -59,7 +59,7 @@ metadata:
   name: ingress-test
   namespace: default  
 spec:
-  ingressClassName: internal-nginx
+  ingressClassName: nginx
   rules:
    - host: devops-info.com
      http:
