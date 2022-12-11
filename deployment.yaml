@@ -49,7 +49,7 @@ metadata:
   name: internal-nginx
   namespace: default
 spec:
-  controller: k8s.io/internal-ingress-nginx
+  controller: nginx.org/ingress-controller
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
