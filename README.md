@@ -16,7 +16,7 @@
  - Ansible не ниже 2.10
  
 Результат:
-  Должна появится дирректория по пути: /home/{username}/test1
-  В эту дирректорию клонируется репозиторий https://github.com/isakimov/test_akimov.git
-  В дирректории /home/{username}/test1 создается файл foo.conf
-  У файла foo.conf установлены права 0711(-rwx--x--x)
+  - Должна появится дирректория по пути: /home/{username}/test1
+  - В эту дирректорию клонируется репозиторий https://github.com/isakimov/test_akimov.git
+  - В дирректории /home/{username}/test1 создается файл foo.conf
+  - У файла foo.conf установлены права 0711(-rwx--x--x)
