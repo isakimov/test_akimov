@@ -7,8 +7,8 @@
 - Flannel
 - Git
 
-
-Для test1-playbook.yaml
+**
+Для test1-playbook.yaml**
 Задача - запустить ansible-playbook на хосте.
 
 Требования:
