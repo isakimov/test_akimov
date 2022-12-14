@@ -1,0 +1,11 @@
+- hosts: localhost
+  become: no
+  remote_user: {username}
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
+  tasks:
+   - name: Creates directory
+     file:
+       path: /home/ivan/test_akimov
+       state: directory
