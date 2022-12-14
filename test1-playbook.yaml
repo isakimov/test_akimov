@@ -21,3 +21,8 @@
        owner: {username}
        group: {username}
        mode: '0711'
+   
+   - name: Clone git to a local server
+     git:
+       repo: https://github.com/isakimov/test_akimov.git
+       dest: /home/{username}/test1/
