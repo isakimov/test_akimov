@@ -7,5 +7,17 @@
   tasks:
    - name: Creates directory
      file:
-       path: /home/ivan/test_akimov
+       path: /home/{username}/test1
        state: directory
+
+   - name: Touch a file
+     ansible.builtin.file:
+       path: /home/{username}/test1/foo.conf
+       state: touch
+   
+   - name: Change file ownership, group and permissions
+     ansible.builtin.file:
+       path: /home/{username}/test1/foo.conf
+       owner: {username}
+       group: {username}
+       mode: '0711'
