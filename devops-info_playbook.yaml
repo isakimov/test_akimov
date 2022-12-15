@@ -28,7 +28,7 @@
    - name: Login DockerHub
      community.docker.docker_login:
        username: isakimov
-       password: 089769700dD
+       password: {pass}
 
    - name: Tag and push to DockerHub
      community.docker.docker_image:
